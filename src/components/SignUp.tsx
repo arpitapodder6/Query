@@ -22,11 +22,10 @@ const SignUp = () => {
   const googleSignin = async() =>{
     try{
      await signInWithPopup(auth,googleProvider)
-     setTimeout(()=>{
+     
       auth?.currentUser !== null && navigate("/main")
       auth?.currentUser !== null && toast.success("LoggedIn Successfully")
  
-     })
     
     }catch(err){
       console.error();
@@ -38,10 +37,10 @@ const SignUp = () => {
   const facebookSignin = async() =>{
     try{
      const data = await signInWithPopup(auth,facebookProvider)
-     setTimeout(()=>{
+
       data?.user !== null && navigate("/main")
       data?.user !== null && toast("LoggedIn Successfully")
-     })
+    
 
     }catch(err){
       console.error();
