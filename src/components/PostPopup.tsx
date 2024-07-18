@@ -1,6 +1,6 @@
 import { addDoc, collection } from "firebase/firestore"
 import { useState } from "react"
-import {storage, auth} from "../firebase/setup"
+import {firestore, auth} from "../firebase/setup"
 
 
 
@@ -10,7 +10,7 @@ type postType = {
 
 const PostPopup = (props:postType) => {
 
-    const questionRef = collection(storage,"questions")
+    const questionRef = collection(firestore,"questions")
     const [quest, setQuest] = useState("")
 
  const addQuestion = () => {

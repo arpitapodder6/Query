@@ -4,9 +4,8 @@ import account from "../assets/account.png"
 import question from "../assets/question.png"
 import pen from "../assets/pen.png"
 import edit from "../assets/edit.png"
-import contentImg from "../assets/contentImg.jpg"
 import { doc, addDoc, collection, getDocs } from "firebase/firestore"
-import { storage } from "../firebase/setup"
+import { firestore } from "../firebase/setup"
 import { useEffect, useState } from "react"
 import comment from "../assets/comment.png"
 import { Link } from "react-router-dom"
@@ -19,8 +18,8 @@ type searchProp = {
  
 const RightBar = (props:searchProp) => {
 
-  const questionRef = collection(storage,"questions")
-  const [questionData, setQuestionData] = useState<any>([])
+  const questionRef = collection(firestore,"questions")
+  const [questionData, setQuestionData] =useState<any>([]);
   const [commentToggle, setCommentToggle] = useState(false)
   const [questionID, setQuestionID] = useState("")
   const [answers, setAnswers] = useState("")
@@ -36,15 +35,16 @@ const RightBar = (props:searchProp) => {
         setQuestionData(filteredData)
 
       }catch(err){
-        console.error(err)
+        console.error("Error fetching questions: ", err);
       }
 
   }
 
-  const answerDoc = doc(storage,"questions",`${questionID ? questionID : Math.random()}`)
+  const answerDoc = doc(firestore,"questions",`${questionID ? questionID : Math.random()}`)
   const answerRef = collection(answerDoc, "answers")
 
   const addAnswer = async() => {
+    if (!questionID || !answers) return; // Add validation
     try{
       await addDoc(
         answerRef,
@@ -52,7 +52,7 @@ const RightBar = (props:searchProp) => {
       )
 
     }catch(err){
-      console.error(err)
+      console.error("Error adding answer: ", err); 
     }
   }
 

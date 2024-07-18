@@ -2,7 +2,7 @@ import Avatar from "react-avatar"
 import account from "../assets/account.png"
 import { collection, doc, getDocs } from "firebase/firestore"
 import { useLocation } from "react-router-dom"
-import {auth, storage } from "../firebase/setup"
+import {auth, firestore } from "../firebase/setup"
 import { useEffect, useState } from "react"
 
 
@@ -12,7 +12,7 @@ const Answers = () => {
    
     const [answerData, setAnswerData] = useState<any>([])
 
-    const answerDoc = doc(storage,"questions",`${location?.state?.id ? location?.state?.id : Math.random()}`)
+    const answerDoc = doc(firestore,"questions",`${location?.state?.id ? location?.state?.id : Math.random()}`)
     const answerRef = collection(answerDoc,"answers")
 
     const getAnswer = async() =>{
