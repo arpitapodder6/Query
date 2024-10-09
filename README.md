@@ -1,3 +1,3 @@
 
-# Quora
-Clone of Quora build with Typescript.
+# Query
+Query web application built with Typescript.
