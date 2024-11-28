@@ -1,5 +1,5 @@
 
-import background from "../assets/background.png"
+import background from "../assets/bg.png"
 import Google from "../assets/Google.png"
 import Facebook from "../assets/Facebook.png"
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
@@ -68,8 +68,8 @@ const SignUp = () => {
     <ToastContainer autoClose={3000}/>
         <div style={{backgroundImage:`url(${background})`, backgroundRepeat:"no-repeat",backgroundSize:"cover",height:"100vh"}}
     className="flex items-center justify-center">
-        <div className="bg-white h-4/6 w-5/10 rounded-sm p-8">
-            <h1 className="text-red-700 text-6xl font-bold font-serif text-center">Quora</h1>
+        <div className="bg-white h-4/6 w-5/10 rounded-2xl p-8">
+            <h1 className="text-blue-500 text-6xl font-bold font-bernoru text-center">Query</h1>
             <h1 className="text-center font-bold text-gray-500 mt-3">A place to share knowledge and better understand the world</h1>
             <div className="flex mt-10">
             <div>
@@ -98,7 +98,7 @@ const SignUp = () => {
             </div>
             </div>
             <hr className="mt-3" />
-            <h1 className="text-sm text-center mt-3 text-zinc-600">About . Careers . Privacy . Terms . Contact . Languages . Your . Ad . Choices . Press© Quora, Inc. 2024</h1>
+            <h1 className="text-sm text-center mt-3 text-zinc-600">About . Careers . Privacy . Terms . Contact . Languages . Your . Ad . Choices . Press© Query, Inc. 2024</h1>
         </div>
         {emailSignUp ? <EmailSignUp setEmailSignUp={setEmailSignUp}/> : "" }
     </div>
